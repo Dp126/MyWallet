@@ -1,0 +1,15 @@
+=== 0.0.5 2010-06-28
+* fix gem
+
+=== 0.0.4 2010-06-28
+* show Image formats
+
+=== 0.0.3 2010-06-28
+* get image format from filename
+
+=== 0.0.2 2010-06-27
+* fix jarfile path
+
+=== 0.0.1 2010-06-26
+
+* Image.resize

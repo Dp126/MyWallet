@@ -1,31 +1,14 @@
 Rails.application.routes.draw do
-  get 'transactions/index'
 
-  get 'transactions/new'
-
-  get 'transactions/create'
-
-  get 'users/index'
-
-  get 'users/create'
-
-  get 'users/new'
-
-  get 'users/delete'
-
-  get 'users/edit'
-
-  root to 'pages#index'
-
-  get '/sign_up' => 'pages#sign_up'
+  root 'pages#index'
 
   get '/about_us' => 'pages#about_us'
 
   get '/log_in' => 'pages#log_in'
 
-  resources :transaction
+  resources :transactions
   resources :users
-  devise_for :users
+  #devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,16 +1,24 @@
 class PagesController < ApplicationController
   def index
-  end
+  	@transactions = Transaction.all.reverse
+  	@last = 0
+  	@tentransactions = Transaction.last(10).reverse
+    @transactions.each do |transaction|
 
-  def sign_up
-  	render 'sign_up'
+		if (transaction.classify == "Income")
+			@last += transaction.amount
+		else 
+		    @last -= transaction.amount
+		end
+	end
+	if Transaction.last != nil
+		@totalbalance = Transaction.last.totalbalance
+	else
+		@totalbalance =0
+	end
   end
 
   def about_us
   	render 'about_us'
-  end
-
-  def log_in
-  	render 'log_in'
   end
 end

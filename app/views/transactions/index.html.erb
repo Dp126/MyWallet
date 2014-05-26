@@ -1,2 +1,168 @@
-<h1>Transactions#index</h1>
-<p>Find me in app/views/transactions/index.html.erb</p>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carlos Alvarez, Theme designer & developer living in Madrid, Spain.">
+    <meta name="author" content="Carlos Alvarez">
+    <link rel="shortcut icon" href="ico/favicon.png">
+
+    <title>My Transaction Records</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="/css/main.css" rel="stylesheet">
+    
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+    <%= stylesheet_link_tag "mystyle", media: 'all' %>
+    
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    tbody tr:nth-child(even)
+    {
+		background: lightblue;
+    }
+    tbody tr:hover
+    {
+    		background: #31a3b0;
+    		color: white;
+    }
+    body
+    {
+    	background-image:url("/assets/bg.jpg"); 
+    	background-repeat:no-repeat;
+    	background-attachment:fixed;
+    	background-position:center;
+    	text-align:center;
+		background-color:lightblue;
+	   	-webkit-background-size: cover;
+		-moz-background-size: cover;
+	   	-o-background-size: cover;
+	   	background-size: cover;
+    }
+
+    </style>
+
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <strong /><a class="navbar-brand" href=" " >My Wallet &nbsp;&nbsp;<%= image_tag "20.png", size: "50x39" %></a><!-- this is where you set the navigation title -->
+        </div>
+        <div class="collapse navbar-collapse"><!-- collapse allows for this navbar to be used in mobile devices -->
+          <ul class="nav navbar-nav"><!-- this is the list of navigation options in your navbar -->
+            <li><a href="/">Home</a></li>
+            <li><a class="active" href="/transactions">Records</a></li>
+            <li><a href="/about_us">About Us</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+  		<div class="row centered">
+  			<div class="col-lg-8 col-lg-offset-2 w">
+	            <div id = "banner">
+	            	<br/>
+	            	<h1>All Records &nbsp;&nbsp; <%= image_tag "50.png", size: "160x126" %></h1>
+	            </div>
+	            <br/><br/>
+          		<center>
+          			<div>
+						<strong><h3>Total Balance: </h3>
+						<h2>Php <%= @last %></h2>
+						<br/>
+					</div>
+
+					<div>
+						<table class = "table">
+							<thread>
+								<tr>
+									<td>Amount</td>
+									<td>Type of Transaction</td>
+									<td>Category</td>
+									<td>Description</td>
+									<td>Date Posted</td>
+									<td></td>
+									<td></td>
+								</tr>
+							</thread>
+							<tbody>
+								<% @transactions.each do |transaction| %>
+								<tr>
+									<td><%= transaction.amount %></td>
+									<td><%= transaction.classify %></td>
+									<td><%= transaction.category %></td>
+									<td><%= transaction.description %></td>
+									<td><%= transaction.posted_on %></td>
+									<td><%= link_to "Edit", edit_transaction_path(transaction) %></td>
+								<td><%=link_to "Delete", transaction_path(transaction), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%></td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+          		</center>
+          		<br />
+          		<a href="/transactions/new" class="btn btn-default">Create a New Transaction</a>
+  			</div>
+  		</div>
+		<div class="row centered">
+			<div class="col-lg-8 col-lg-offset-2 w tooltip-demo">
+				<a data-toggle="tooltip" title="Facebook" href="https://www.facebook.com/erikareyes695"><i class="fa fa-facebook"></i></a>
+				<a data-toggle="tooltip" title="Twitter" href="https://twitter.com/dpcai_1023"><i class="fa fa-twitter"></i></a>
+				<a data-toggle="tooltip" title="Call Us" href="#"><i class="fa fa-phone"></i></a>
+				<a data-toggle="tooltip" title="Free Themes" href="http://BlackTie.co"><i class="fa fa-heart"></i></a>
+				<a data-toggle="tooltip" title="Blog" href="#"><i class="fa fa-comment"></i></a>
+				<a data-toggle="tooltip" title="Email Me!" href="http://mail.yahoo.com/"><i class="fa fa-envelope"></i></a>
+				<a data-toggle="tooltip" title="Newsletter" href="http://eepurl.com/"><i class="fa fa-coffee"></i></a>
+			</div>
+		</div>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script>
+    $('.tooltip-demo').tooltip({
+      selector: "[data-toggle=tooltip]",
+      container: "body"
+    })
+	</script>
+
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="/js/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("/img/bg.jpg", {speed: 500});
+    </script>
+
+  </body>
+</html>

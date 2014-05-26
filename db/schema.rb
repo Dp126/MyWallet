@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(version: 20140524083359) do
 
   create_table "transactions", force: true do |t|
     t.float    "amount"
-    t.string   "type"
-    t.string   "label"
+    t.string   "classify"
+    t.string   "category"
     t.text     "description"
     t.date     "posted_on"
+    t.float    "totalbalance"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

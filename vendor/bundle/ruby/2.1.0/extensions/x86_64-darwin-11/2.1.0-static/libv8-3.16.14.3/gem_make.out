@@ -1,0 +1,45 @@
+/Users/Ping/.rbenv/versions/2.1.1/bin/ruby extconf.rb --without-v8-lib=/path/to/lib
+creating Makefile
+/Users/Ping/Desktop/MyWallet/vendor/bundle/ruby/2.1.0/gems/libv8-3.16.14.3/ext/libv8/builder.rb:87: warning: Insecure world writable dir /usr/local in PATH, mode 040777
+Compiling v8 for x64
+Using python 2.7.1
+Unable to find a compiler officially supported by v8.
+It is recommended to use GCC v4.4 or higher
+Using compiler: g++
+Unable to find a compiler officially supported by v8.
+It is recommended to use GCC v4.4 or higher
+Traceback (most recent call last):
+  File "build/gyp/gyp", line 18, in <module>
+    sys.exit(gyp.main(sys.argv[1:]))
+  File "build/gyp/pylib/gyp/__init__.py", line 514, in main
+    return gyp_main(args)
+  File "build/gyp/pylib/gyp/__init__.py", line 499, in gyp_main
+    generator.GenerateOutput(flat_list, targets, data, params)
+  File "build/gyp/pylib/gyp/generator/make.py", line 2127, in GenerateOutput
+    part_of_all=qualified_target in needed_targets)
+  File "build/gyp/pylib/gyp/generator/make.py", line 765, in Write
+    self.Pchify))
+  File "build/gyp/pylib/gyp/generator/make.py", line 1150, in WriteSources
+    cflags = self.xcode_settings.GetCflags(configname)
+  File "build/gyp/pylib/gyp/xcode_emulation.py", line 260, in GetCflags
+    sdk_root = self._SdkPath()
+  File "build/gyp/pylib/gyp/xcode_emulation.py", line 247, in _SdkPath
+    return os.path.join(self._GetSdkBaseDir(),
+  File "build/gyp/pylib/gyp/xcode_emulation.py", line 234, in _GetSdkBaseDir
+    raise Exception('Error %d running xcode-select' % job.returncode)
+Exception: Error 1 running xcode-select
+make: *** [out/Makefile.x64] Error 1
+/Users/Ping/Desktop/MyWallet/vendor/bundle/ruby/2.1.0/gems/libv8-3.16.14.3/ext/libv8/location.rb:36:in `block in verify_installation!': libv8 did not install properly, expected binary v8 archive '/Users/Ping/Desktop/MyWallet/vendor/bundle/ruby/2.1.0/gems/libv8-3.16.14.3/vendor/v8/out/x64.release/obj.target/tools/gyp/libv8_base.a'to exist, but it was not found (Libv8::Location::Vendor::ArchiveNotFound)
+	from /Users/Ping/Desktop/MyWallet/vendor/bundle/ruby/2.1.0/gems/libv8-3.16.14.3/ext/libv8/location.rb:35:in `each'
+	from /Users/Ping/Desktop/MyWallet/vendor/bundle/ruby/2.1.0/gems/libv8-3.16.14.3/ext/libv8/location.rb:35:in `verify_installation!'
+	from /Users/Ping/Desktop/MyWallet/vendor/bundle/ruby/2.1.0/gems/libv8-3.16.14.3/ext/libv8/location.rb:26:in `install!'
+	from extconf.rb:7:in `<main>'
+GYP_GENERATORS=make \
+	build/gyp/gyp --generator-output="out" build/all.gyp \
+	              -Ibuild/standalone.gypi --depth=. \
+	              -Dv8_target_arch=x64 \
+	              -S.x64  -Dv8_enable_backtrace=1 -Dv8_can_use_vfp2_instructions=true -Darm_fpu=vfpv2 -Dv8_can_use_vfp3_instructions=true -Darm_fpu=vfpv3
+xcode-select: Error: No Xcode is selected. Use xcode-select -switch /Applications/Xcode.app to select /Applications/Xcode.app, or see the xcode-select manpage (man xcode-select) for further information.
+
+
+extconf failed, exit code 1
